@@ -1,0 +1,26 @@
+<h1>Task List</h1>
+
+<div *ngIf="tasks.length == 0">
+  <p>No tasks available</p>
+</div>
+
+<ul>
+  <li *ngFor="let item of tasks" [appHoverHighlight]="'lightyellow'">
+    {{ item.title }}
+  </li>
+</ul>
+
+<h3>Add New Task</h3>
+<label>Title </label>
+<input [formControl]="title" />
+<br />
+<label>Description </label>
+<input [formControl]="description" />
+<button (click)="onSubmit()">Add new Task</button>
+
+<div *ngIf="title.invalid && title.touched">
+  <div *ngIf="title.errors?.['required']">Title is required</div>
+</div>
+<div *ngIf="description.invalid && description.touched">
+  <div *ngIf="description.errors?.['required']">Description is required</div>
+</div>
