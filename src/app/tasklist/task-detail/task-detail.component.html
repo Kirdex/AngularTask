@@ -1,0 +1,13 @@
+<li [appHoverHighlight]="'lightblue'">
+  <p>{{ details.title }}</p>
+  <p>{{ details.description }}</p>
+  <div *ngIf="buttonClicked">
+    <label>Title:</label>
+    <input type="text" [(ngModel)]="newTitle" />
+    <br />
+    <label>Description:</label>
+    <input type="text" [(ngModel)]="newDescription" />
+    <button (click)="Save()">Save</button>
+  </div>
+  <button (click)="onEdit()">Edit</button>
+</li>

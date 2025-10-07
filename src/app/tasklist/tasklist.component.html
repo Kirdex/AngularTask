@@ -1,12 +1,25 @@
 <h1>Task List</h1>
+<label>Search Title </label>
+<input [(ngModel)]="userInput" (keyup)="onSearch()" />
+
+<label>Filter by Status: </label>
+<select [(ngModel)]="selectedStatus">
+  <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
+</select>
 
 <div *ngIf="tasks.length == 0">
   <p>No tasks available</p>
 </div>
 
 <ul>
-  <li *ngFor="let item of tasks" [appHoverHighlight]="'lightyellow'">
-    {{ item.title }}
+  <li
+    *ngFor="let item of tasks | statusFilter : selectedStatus"
+    [appHoverHighlight]="'lightyellow'"
+  >
+    <app-task-detail
+      [details]="item"
+      (passValue)="triggerEvent($event)"
+    ></app-task-detail>
   </li>
 </ul>
 

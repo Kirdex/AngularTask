@@ -11,7 +11,13 @@ export class HoverHighlightDirective {
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
-@HostListener('mouseleave') onLeave() {
+  @HostListener('mouseenter') onEnter() {
+    // store original so we can restore on leave
+    this.originalBackground = this.el.nativeElement.style.backgroundColor || '';
+    this.renderer.setStyle(this.el.nativeElement, 'backgroundColor', this.hoverColor);
+  }
+
+  @HostListener('mouseleave') onLeave() {
     this.renderer.setStyle(this.el.nativeElement, 'backgroundColor', this.originalBackground);
   }
 }
