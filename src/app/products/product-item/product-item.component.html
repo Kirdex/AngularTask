@@ -1,0 +1,10 @@
+<div>{{ dataSource.title }}</div>
+<div>{{ dataSource.description }}</div>
+<button (click)="Edit()">Edit Product</button>
+<button (click)="deleteProduct()">Delete Product</button>
+<div *ngIf="editOn">
+  <label>Title: <input type="text" [(ngModel)]="newTitle" /></label>
+  <label>Description: <input type="text" [(ngModel)]="newDescription" /></label>
+  <br />
+  <button (click)="changeProduct()">Change Product Details</button>
+</div>

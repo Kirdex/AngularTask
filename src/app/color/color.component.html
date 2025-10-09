@@ -1,0 +1,6 @@
+<h1 [ngStyle]="{ color: colorVar }">Complete Angular Tutorial For Beginners</h1>
+
+<div *ngFor="let paragraph of body">
+  <app-section [section]="paragraph" (colorSelected)="passColor($event)">
+  </app-section>
+</div>

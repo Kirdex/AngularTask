@@ -1,0 +1,21 @@
+<div>
+  <div>Title: <input [(ngModel)]="newTitle" /></div>
+  <div>Description: <input [(ngModel)]="newDescription" /></div>
+  <button (click)="addProduct()">Add new Product</button>
+  <label>Search Product: </label
+  ><input
+    type="text"
+    [(ngModel)]="searchInput"
+    (keyup)="fetchProductByName()"
+  />
+</div>
+<br />
+<div *ngIf="!errorMessage">
+  <div *ngFor="let product of arr">
+    <app-product-item
+      [dataSource]="product"
+      (passUpdate)="updateProduct($event)"
+      (passDelete)="deleteProduct($event)"
+    ></app-product-item>
+  </div>
+</div>
