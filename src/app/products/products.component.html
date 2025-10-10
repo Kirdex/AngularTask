@@ -5,7 +5,7 @@
   <label>Search Product: </label
   ><input
     type="text"
-    [(ngModel)]="searchInput"
+    [formControl]="userInput"
     (keyup)="fetchProductByName()"
   />
 </div>
